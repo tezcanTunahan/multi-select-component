@@ -1,35 +1,34 @@
 import React from 'react';
 
 export default function HighlightSubstring({ mainString, substring }: { mainString: string; substring: string }) {
-  function highlightSubstring(mainString: string, substring: string) {
-    //  to lower case
-    mainString = mainString.toLowerCase();
-    substring = substring.toLowerCase();
-    // İkinci stringin birincide geçip geçmediğini kontrol et
-    if (mainString.includes(substring)) {
-      // Geçiyorsa, o kısmı bold yap
-      const index = mainString.indexOf(substring);
-      const firstPart = mainString.slice(0, index);
-      const lastPart = mainString.slice(index + substring.length);
+  // both strings to lower case
+  mainString = mainString.toLowerCase();
+  substring = substring.toLowerCase();
 
-      return (
-        <span>
-          {
-            // first part first letter to upper case
-            firstPart.charAt(0).toUpperCase() + firstPart.slice(1)
-          }
-          <strong>
-            {
-              // substring first letter to upper case
-              firstPart.length > 0 ? substring : substring.charAt(0).toUpperCase() + substring.slice(1)
-            }
-          </strong>
-          {lastPart}
-        </span>
-      );
-    }
-    // Geçmiyorsa, birinci stringi olduğu gibi dön
-    return mainString;
+  // if substring is not included in mainString, return mainString
+  if (!mainString.includes(substring)) {
+    return <span>{mainString}</span>;
   }
-  return <div>{highlightSubstring(mainString, substring)}</div>;
+
+  // find the index of substring in mainString
+  const index = mainString.indexOf(substring);
+  // split the mainString into 3 parts => first part + substring + last part
+  const firstPart = mainString.slice(0, index);
+  const lastPart = mainString.slice(index + substring.length);
+
+  return (
+    <span>
+      {
+        // firstPart first letter to uppercase
+        firstPart.charAt(0).toUpperCase() + firstPart.slice(1)
+      }
+      <strong>
+        {
+          // if firstPart is empty, return substring first letter to uppercase
+          firstPart.length > 0 ? substring : substring.charAt(0).toUpperCase() + substring.slice(1)
+        }
+      </strong>
+      {lastPart}
+    </span>
+  );
 }
