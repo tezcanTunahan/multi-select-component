@@ -16,19 +16,17 @@ export default function HighlightSubstring({ mainString, substring }: { mainStri
   const firstPart = mainString.slice(0, index);
   const lastPart = mainString.slice(index + substring.length);
 
+  // return the mainString with the substring highlighted
   return (
     <span>
-      {
-        // firstPart first letter to uppercase
-        firstPart.charAt(0).toUpperCase() + firstPart.slice(1)
-      }
-      <strong>
-        {
-          // if firstPart is empty, return substring first letter to uppercase
-          firstPart.length > 0 ? substring : substring.charAt(0).toUpperCase() + substring.slice(1)
-        }
-      </strong>
+      {firstLetterToUpperCase(firstPart)}
+      <strong>{firstPart.length > 0 ? substring : firstLetterToUpperCase(substring)}</strong>
       {lastPart}
     </span>
   );
 }
+
+// function to capitalize the first letter of the string
+const firstLetterToUpperCase = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
