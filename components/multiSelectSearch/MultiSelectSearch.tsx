@@ -7,7 +7,7 @@ export type SelectOption = {
   value: string;
   label: string;
   img?: string;
-  episode?: string;
+  episode?: number;
 };
 
 type SelectProps = {

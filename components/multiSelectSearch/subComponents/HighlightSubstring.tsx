@@ -1,4 +1,5 @@
 import React from 'react';
+import { firstLetterToUpperCase } from '@/lib/utils';
 
 // Component to highlight "bold" the substring in the main string
 export default function HighlightSubstring({ mainString, substring }: { mainString: string; substring: string }) {
@@ -26,8 +27,3 @@ export default function HighlightSubstring({ mainString, substring }: { mainStri
     </span>
   );
 }
-
-// function to capitalize the first letter of the string
-const firstLetterToUpperCase = (str: string) => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-};

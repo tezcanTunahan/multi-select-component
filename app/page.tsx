@@ -1,15 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import MultiSelectSearch, { SelectOption } from '@/components/multiSelectSearch/MultiSelectSearch';
-import axios from 'axios';
 import Link from 'next/link';
-
-type Character = {
-  id: number;
-  name: string;
-  image: string;
-  episode: string[];
-};
+import { fetchCharacters } from './services/rickAndMortyService';
 
 export default function Home() {
   const [options, setOptions] = useState<SelectOption[]>([]);
@@ -21,13 +14,12 @@ export default function Home() {
 
   // Fetch data from the API with the search value and set the options when the search value changes
   useEffect(() => {
-    setError('');
+    if (!search.trim()) return;
     setLoading(true);
-    axios
-      .get(`https://rickandmortyapi.com/api/character?name=${search}`)
-      .then((res) => {
+    fetchCharacters(search)
+      .then((characters) => {
         setOptions(
-          res.data.results.map((character: Character) => ({
+          characters.map((character) => ({
             value: character.id.toString(),
             label: character.name,
             img: character.image,
@@ -37,11 +29,9 @@ export default function Home() {
       })
       .catch((err) => {
         console.error(err);
-        setError(err.response.data.error);
+        setError('Failed to fetch characters');
       })
-      .finally(() => {
-        setLoading(false);
-      });
+      .finally(() => setLoading(false));
   }, [search]);
 
   return (
