@@ -16,6 +16,7 @@ export default function Home() {
   useEffect(() => {
     if (!search.trim()) return;
     setLoading(true);
+    setError('');
     fetchCharacters(search)
       .then((characters) => {
         setOptions(
