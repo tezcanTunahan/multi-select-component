@@ -4,19 +4,22 @@ import MultiSelectSearch, { SelectOption } from '@/components/multiSelectSearch/
 import axios from 'axios';
 import Link from 'next/link';
 
+type Character = {
+  id: number;
+  name: string;
+  image: string;
+  episode: string[];
+};
+
 export default function Home() {
-  // State for the options
   const [options, setOptions] = useState<SelectOption[]>([]);
+  const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   // State for the selected values
   const [value, setValue] = useState<SelectOption[] | undefined>([]);
-  // State for the search value
-  const [search, setSearch] = useState('');
-  // State for the loading state
-  const [loading, setLoading] = useState(false);
-  // State for the error message
-  const [error, setError] = useState('');
 
-  //  Fetch data from the API with the search value
+  // Fetch data from the API with the search value and set the options when the search value changes
   useEffect(() => {
     setError('');
     setLoading(true);
@@ -24,7 +27,7 @@ export default function Home() {
       .get(`https://rickandmortyapi.com/api/character?name=${search}`)
       .then((res) => {
         setOptions(
-          res.data.results.map((character: any) => ({
+          res.data.results.map((character: Character) => ({
             value: character.id.toString(),
             label: character.name,
             img: character.image,
