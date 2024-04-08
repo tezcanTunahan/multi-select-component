@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import MultiSelectSearch, { SelectOption } from '@/components/multiSelectSearch/MultiSelectSearch';
 import Link from 'next/link';
-import { fetchCharacters } from './services/rickAndMortyService';
+import { fetchCharacters } from '../services/rickAndMortyService';
 
 export default function Home() {
   const [options, setOptions] = useState<SelectOption[]>([]);
