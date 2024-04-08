@@ -14,11 +14,11 @@ type SelectProps = {
   options: SelectOption[];
   value?: SelectOption[];
   setValue: React.Dispatch<React.SetStateAction<SelectOption[] | undefined>>;
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export default function MultiSelectSearch({ options, value, setValue }: SelectProps) {
-  // search state to filter the options
-  const [search, setSearch] = useState('');
+export default function MultiSelectSearch({ options, value, setValue, search, setSearch }: SelectProps) {
   // filtered options based on the search value
   const [filteredOptions, setFilteredOptions] = useState(options);
 
