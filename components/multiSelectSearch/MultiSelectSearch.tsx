@@ -25,7 +25,7 @@ export default function MultiSelectSearch({ options, value, setValue, search, se
   return (
     <div className='w-full'>
       {/* Input to show the selected elements } */}
-      <div className='border border-gray-600 p-2 rounded-md  mb-4 flex flex-row  items-center justify-between gap-2  shadow-md'>
+      <div className='border border-gray-600 p-2 rounded-md min-h-14 mb-4 flex flex-row  items-center justify-between gap-2  shadow-md'>
         <div className='flex flex-wrap gap-2'>
           {/* Show the selected elements in the input */}
           {value?.map((option) => (

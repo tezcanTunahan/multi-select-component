@@ -11,11 +11,12 @@ export default function Home() {
   const [value, setValue] = useState<SelectOption[] | undefined>([]);
   // State for the search value
   const [search, setSearch] = useState('');
-
+  // State for the loading state
   const [loading, setLoading] = useState(false);
-
+  // State for the error message
   const [error, setError] = useState('');
-  //  Fetch data from the API
+
+  //  Fetch data from the API with the search value
   useEffect(() => {
     setError('');
     setLoading(true);
