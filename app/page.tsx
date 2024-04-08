@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import MultiSelectSearch, { SelectOption } from '@/components/MultiSelectSearch';
+import MultiSelectSearch, { SelectOption } from '@/components/multiSelectSearch/MultiSelectSearch';
 import axios from 'axios';
 import Link from 'next/link';
 
