@@ -25,13 +25,13 @@ export default function MultiSelectSearch({ options, value, setValue }: SelectPr
   return (
     <div className='w-full'>
       {/* Input to show the selected elements } */}
-      <div className='border border-gray-600 p-2 rounded-xl  mb-4 flex flex-row  items-center justify-between gap-2 '>
+      <div className='border border-gray-600 p-2 rounded-xl  mb-4 flex flex-row  items-center justify-between gap-2  '>
         <div className='flex flex-wrap gap-2'>
           {value?.map((option) => (
             <InputSelectedElement key={option.value} value={option} setValue={setValue} />
           ))}
           <input
-            className=' border-none outline-none w-1/3'
+            className=' border-none outline-none w-1/3 '
             value={search}
             placeholder='Search...'
             onChange={(e) => {

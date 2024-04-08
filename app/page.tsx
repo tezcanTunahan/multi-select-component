@@ -33,7 +33,7 @@ export default function Home() {
           Tunahan tezcan
         </Link>
       </p>
-      <div className='w-[500px]'>
+      <div className='w-10/12 md:w-6/12'>
         <MultiSelectSearch value={value} setValue={setValue} options={options} />
       </div>
     </main>
