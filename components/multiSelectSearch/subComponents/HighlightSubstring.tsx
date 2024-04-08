@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Component to highlight "bold" the substring in the main string
 export default function HighlightSubstring({ mainString, substring }: { mainString: string; substring: string }) {
   // both strings to lower case
   mainString = mainString.toLowerCase();

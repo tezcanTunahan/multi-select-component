@@ -1,5 +1,5 @@
 import React from 'react';
-import { SelectOption } from './MultiSelectSearch';
+import { SelectOption } from '../MultiSelectSearch';
 
 type InputSelectedElementProps = {
   value: SelectOption;
