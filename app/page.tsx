@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import MultiSelectSearch, { SelectOption } from '@/components/multiSelectSearch/MultiSelectSearch';
 import Link from 'next/link';
 import { useFetchCharacters } from '@/hooks/useFetchCharacters';
-import Loading from '@/components/Loading';
-import Error from '@/components/Error';
 
 export default function Home() {
   const [search, setSearch] = useState('');
@@ -21,15 +19,9 @@ export default function Home() {
         </Link>
       </p>
       <div className='w-10/12 md:w-6/12'>
-        <MultiSelectSearch
-          value={value}
-          setValue={setValue}
-          options={options}
-          search={search}
-          setSearch={setSearch}
-          error={error}
-          loading={loading}
-        />
+        <MultiSelectSearch value={value} setValue={setValue} options={options} search={search} setSearch={setSearch} />
+        {error && <div className='bg-red-400 p-2 text-white'>Error: {error}</div>}
+        {loading && <div className='bg-blue-400 p-2 text-white'>Loading...</div>}
       </div>
     </main>
   );

@@ -29,7 +29,7 @@ const useFetchCharacters = (search: string) => {
       })
       .catch((err) => {
         console.error(err);
-        setError('Failed to fetch characters');
+        setError('Failed to fetch characters !!!');
       })
       .finally(() => setLoading(false));
   }, [search]);
