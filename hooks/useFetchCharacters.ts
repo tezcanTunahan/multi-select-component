@@ -8,7 +8,9 @@ const useFetchCharacters = (search: string) => {
   const [error, setError] = useState<string>('');
 
   useEffect(() => {
+    // If search is empty, do not make a request
     if (!search.trim()) return;
+
     setLoading(true);
     setError('');
     fetchCharacters(search)
