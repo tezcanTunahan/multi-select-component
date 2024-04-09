@@ -19,9 +19,15 @@ export default function Home() {
         </Link>
       </p>
       <div className='w-10/12 md:w-6/12'>
-        <MultiSelectSearch value={value} setValue={setValue} options={options} search={search} setSearch={setSearch} />
-        {error && <div className='bg-red-400 p-2 text-white'>Error: {error}</div>}
-        {loading && <div className='bg-blue-400 p-2 text-white'>Loading...</div>}
+        <MultiSelectSearch
+          value={value}
+          setValue={setValue}
+          options={options}
+          search={search}
+          setSearch={setSearch}
+          error={error}
+          loading={loading}
+        />
       </div>
     </main>
   );
