@@ -1,6 +1,7 @@
 import React from 'react';
 import HighlightSubstring from './HighlightSubstring';
 import { SelectOption } from '../MultiSelectSearch';
+import useKeyboardNavigation from '@/hooks/useKeyboardNavigation';
 
 type SelectOptionProps = {
   filteredOptions: any[];
@@ -10,13 +11,16 @@ type SelectOptionProps = {
   setSearch: any;
 };
 
-//  List of options to select from
 export default function SelectList({ filteredOptions, value, setValue, search, setSearch }: SelectOptionProps) {
+  // Custom hook to handle keyboard navigation
+  useKeyboardNavigation(setSearch);
+
   return (
     <ul className='flex flex-col gap-2'>
       {search.length > 0 &&
         filteredOptions.map((option) => (
           <button
+            id='button'
             className={`flex items-center gap-2 cursor-pointer hover:bg-gray-200 p-2 ${
               value?.some((opt: any) => opt.value === option.value) ? 'bg-gray-300' : ''
             }  `}
