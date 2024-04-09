@@ -1,12 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchCharacters } from '@/services/rickAndMortyService';
-
-export interface SelectOption {
-  value: string;
-  label: string;
-  img: string;
-  episode: number;
-}
+import { SelectOption } from '@/components/multiSelectSearch/MultiSelectSearch';
 
 const useFetchCharacters = (search: string) => {
   const [options, setOptions] = useState<SelectOption[]>([]);

@@ -2,20 +2,16 @@ import React from 'react';
 import HighlightSubstring from './HighlightSubstring';
 import { SelectOption } from '../MultiSelectSearch';
 
-//  List of options to select from
-export default function SelectList({
-  filteredOptions,
-  value,
-  setValue,
-  search,
-  setSearch,
-}: {
+type SelectOptionProps = {
   filteredOptions: any[];
   value: any;
   setValue: any;
   search: string;
   setSearch: any;
-}) {
+};
+
+//  List of options to select from
+export default function SelectList({ filteredOptions, value, setValue, search, setSearch }: SelectOptionProps) {
   return (
     <ul className='flex flex-col gap-2'>
       {search.length > 0 &&
