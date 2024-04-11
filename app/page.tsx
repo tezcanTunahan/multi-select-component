@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import MultiSelectSearch, { SelectOption } from '@/components/multiSelectSearch/MultiSelectSearch';
 import Link from 'next/link';
 import { fetchCharacters } from '@/services/rickAndMortyService';
+import { MultiSelectInput } from 'multi-select-input';
 
 export default function Home() {
   const [value, setValue] = useState<SelectOption[] | undefined>([]);
@@ -46,6 +47,16 @@ export default function Home() {
       </p>
       <div className='w-10/12 md:w-6/12'>
         <MultiSelectSearch
+          value={value}
+          setValue={setValue}
+          options={options}
+          errorMessage={errorMessage}
+          loading={loading}
+          onChange={(e) => {
+            handleSearch(e.target.value);
+          }}
+        />
+        <MultiSelectInput
           value={value}
           setValue={setValue}
           options={options}
