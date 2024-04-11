@@ -9,11 +9,16 @@ type SelectOptionProps = {
   setValue: any;
   search: string;
   setSearch: any;
+  errorMassage: string;
 };
 
-export default function SelectList({ options, value, setValue, search, setSearch }: SelectOptionProps) {
+export default function SelectList({ options, value, setValue, search, setSearch, errorMassage }: SelectOptionProps) {
   // Custom hook to handle keyboard navigation
   useKeyboardNavigation(setSearch);
+
+  if (errorMassage) {
+    return <div className='bg-red-400 p-2 text-white'>{errorMassage}</div>;
+  }
 
   return (
     <ul className='flex flex-col gap-2'>

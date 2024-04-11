@@ -2,20 +2,17 @@
 import React, { useState } from 'react';
 import MultiSelectSearch, { SelectOption } from '@/components/multiSelectSearch/MultiSelectSearch';
 import Link from 'next/link';
-import { useFetchCharacters } from '@/hooks/useFetchCharacters';
-import { MultiSelectInput } from 'multi-select-input';
 import { fetchCharacters } from '@/services/rickAndMortyService';
 
 export default function Home() {
   const [value, setValue] = useState<SelectOption[] | undefined>([]);
-  // const { options, loading, error } = useFetchCharacters(search);
   const [options, setOptions] = useState<SelectOption[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleSearch = (search: string) => {
     setLoading(true);
-    setError('');
+    setErrorMessage('');
     fetchCharacters(search)
       .then((data) => {
         setOptions(
@@ -30,7 +27,7 @@ export default function Home() {
       })
       .catch((error) => {
         console.error('Error fetching characters:', error);
-        setError('Error fetching characters');
+        setErrorMessage('Error fetching characters');
         setLoading(false);
       });
   };
@@ -49,7 +46,7 @@ export default function Home() {
           value={value}
           setValue={setValue}
           options={options}
-          error={error}
+          errorMessage={errorMessage}
           loading={loading}
           onChange={(e) => {
             console.log('e.target.value', e.target.value);
