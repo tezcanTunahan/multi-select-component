@@ -3,7 +3,7 @@ import { IoMdArrowDropdown } from 'react-icons/io';
 import InputSelectedElement from './InputSelectedElement';
 import { SelectOption } from '../MultiSelectSearch';
 
-type SelectProps = {
+type Props = {
   value?: SelectOption[];
   setValue: React.Dispatch<React.SetStateAction<SelectOption[] | undefined>>;
   search: string;
@@ -11,7 +11,7 @@ type SelectProps = {
   setSearch: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export default function SearchBar({ value, setValue, search, onChange, setSearch }: SelectProps) {
+export default function SearchBar({ value, setValue, search, onChange, setSearch }: Props) {
   return (
     <div className='border border-gray-600 p-2 rounded-md min-h-14 mb-4 flex flex-row  items-center justify-between gap-2  shadow-md'>
       <div className='flex flex-wrap gap-2'>

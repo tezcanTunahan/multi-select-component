@@ -10,7 +10,7 @@ export type SelectOption = {
   subTitle?: string;
 };
 
-type SelectProps = {
+type Props = {
   options: SelectOption[];
   value?: SelectOption[];
   setValue: React.Dispatch<React.SetStateAction<SelectOption[] | undefined>>;
@@ -19,7 +19,7 @@ type SelectProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default function MultiSelectSearch({ options, value, setValue, errorMessage, loading, onChange }: SelectProps) {
+export default function MultiSelectSearch({ options, value, setValue, errorMessage, loading, onChange }: Props) {
   const [search, setSearch] = useState('');
 
   return (

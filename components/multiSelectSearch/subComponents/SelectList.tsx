@@ -3,7 +3,7 @@ import HighlightSubstring from './HighlightSubstring';
 import { SelectOption } from '../MultiSelectSearch';
 import useKeyboardNavigation from '@/hooks/useKeyboardNavigation';
 
-type SelectOptionProps = {
+type Props = {
   options: any[];
   value: any;
   setValue: any;
@@ -13,7 +13,7 @@ type SelectOptionProps = {
   loading: boolean;
 };
 
-export default function SelectList({ options, value, setValue, search, setSearch, errorMassage, loading }: SelectOptionProps) {
+export default function SelectList({ options, value, setValue, search, setSearch, errorMassage, loading }: Props) {
   useKeyboardNavigation(setSearch);
 
   if (errorMassage) {

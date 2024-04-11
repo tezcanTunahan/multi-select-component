@@ -46,16 +46,6 @@ export default function Home() {
         </Link>
       </p>
       <div className='w-10/12 md:w-6/12'>
-        <MultiSelectSearch
-          value={value}
-          setValue={setValue}
-          options={options}
-          errorMessage={errorMessage}
-          loading={loading}
-          onChange={(e) => {
-            handleSearch(e.target.value);
-          }}
-        />
         <MultiSelectInput
           value={value}
           setValue={setValue}
@@ -66,6 +56,11 @@ export default function Home() {
             handleSearch(e.target.value);
           }}
         />
+
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et error maxime itaque nulla animi excepturi nemo! Inventore nobis corporis
+          molestias a omnis rem dolores, quia corrupti consequuntur delectus accusantium at? lorem*55
+        </p>
       </div>
     </main>
   );

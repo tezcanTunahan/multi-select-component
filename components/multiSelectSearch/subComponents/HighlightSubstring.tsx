@@ -1,13 +1,13 @@
 import React from 'react';
 import { firstLetterToUpperCase } from '@/lib/utils';
 
-type HighlightSubstringProps = {
+type Props = {
   mainString: string;
   substring: string;
 };
 
 // Component to highlight "bold" the substring in the main string
-export default function HighlightSubstring({ mainString, substring }: HighlightSubstringProps) {
+export default function HighlightSubstring({ mainString, substring }: Props) {
   // both strings to lower case
   mainString = mainString.toLowerCase();
   substring = substring.toLowerCase();
