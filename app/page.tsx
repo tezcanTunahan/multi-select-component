@@ -21,7 +21,7 @@ export default function Home() {
               value: character.id,
               label: character.name,
               img: character.image,
-              episode: character.episode.length,
+              subTitle: character.episode.length + ' Episodes',
             }))
           );
           setLoading(false);
@@ -52,7 +52,6 @@ export default function Home() {
           errorMessage={errorMessage}
           loading={loading}
           onChange={(e) => {
-            console.log('e.target.value', e.target.value);
             handleSearch(e.target.value);
           }}
         />
