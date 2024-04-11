@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import MultiSelectSearch, { SelectOption } from '@/components/multiSelectSearch/MultiSelectSearch';
 import Link from 'next/link';
 import { useFetchCharacters } from '@/hooks/useFetchCharacters';
+import { MultiSelectInput } from 'multi-select-input';
 
 export default function Home() {
   const [search, setSearch] = useState('');
@@ -28,6 +29,9 @@ export default function Home() {
           error={error}
           loading={loading}
         />
+      </div>
+      <div>
+        <MultiSelectInput value={value} setValue={setValue} options={options} search={search} setSearch={setSearch} error={error} loading={loading} />
       </div>
     </main>
   );
