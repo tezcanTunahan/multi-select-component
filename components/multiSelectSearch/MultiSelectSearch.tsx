@@ -14,22 +14,20 @@ type SelectProps = {
   options: SelectOption[];
   value?: SelectOption[];
   setValue: React.Dispatch<React.SetStateAction<SelectOption[] | undefined>>;
-  search: string;
-  setSearch: React.Dispatch<React.SetStateAction<string>>;
   error: string;
   loading: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default function MultiSelectSearch({ options, value, setValue, search, setSearch, error, loading }: SelectProps) {
-  // filtered options based on the search value
-  const [filteredOptions, setFilteredOptions] = useState(options);
+export default function MultiSelectSearch({ options, value, setValue, error, loading, onChange }: SelectProps) {
+  const [search, setSearch] = useState('');
 
   return (
     <div className='w-full'>
-      <SearchBar options={options} value={value} setValue={setValue} search={search} setSearch={setSearch} setFilteredOptions={setFilteredOptions} />
+      <SearchBar value={value} setValue={setValue} search={search} setSearch={setSearch} onChange={onChange} />
       {error && <div className='bg-red-400 p-2 text-white'>Error: {error}</div>}
       {loading && <div className='bg-blue-400 p-2 text-white'>Loading...</div>}
-      <SelectList filteredOptions={filteredOptions} value={value} setValue={setValue} search={search} setSearch={setSearch} />
+      {!loading && !error && <SelectList options={options} value={value} setValue={setValue} search={search} setSearch={setSearch} />}
     </div>
   );
 }

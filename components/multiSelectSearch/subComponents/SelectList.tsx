@@ -4,21 +4,21 @@ import { SelectOption } from '../MultiSelectSearch';
 import useKeyboardNavigation from '@/hooks/useKeyboardNavigation';
 
 type SelectOptionProps = {
-  filteredOptions: any[];
+  options: any[];
   value: any;
   setValue: any;
   search: string;
   setSearch: any;
 };
 
-export default function SelectList({ filteredOptions, value, setValue, search, setSearch }: SelectOptionProps) {
+export default function SelectList({ options, value, setValue, search, setSearch }: SelectOptionProps) {
   // Custom hook to handle keyboard navigation
   useKeyboardNavigation(setSearch);
 
   return (
     <ul className='flex flex-col gap-2'>
       {search.length > 0 &&
-        filteredOptions.map((option) => (
+        options.map((option) => (
           <button
             id='button'
             className={`flex items-center gap-2 cursor-pointer hover:bg-gray-200 p-2 ${
@@ -30,7 +30,7 @@ export default function SelectList({ filteredOptions, value, setValue, search, s
                 if (prevValue?.some((opt: SelectOption) => opt.value === option.value)) {
                   return prevValue?.filter((opt: any) => opt.value !== option.value);
                 }
-                setSearch('');
+                // setSearch('');
                 return [...(prevValue || []), option];
               });
             }}>

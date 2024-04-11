@@ -4,11 +4,36 @@ import MultiSelectSearch, { SelectOption } from '@/components/multiSelectSearch/
 import Link from 'next/link';
 import { useFetchCharacters } from '@/hooks/useFetchCharacters';
 import { MultiSelectInput } from 'multi-select-input';
+import { fetchCharacters } from '@/services/rickAndMortyService';
 
 export default function Home() {
-  const [search, setSearch] = useState('');
   const [value, setValue] = useState<SelectOption[] | undefined>([]);
-  const { options, loading, error } = useFetchCharacters(search);
+  // const { options, loading, error } = useFetchCharacters(search);
+  const [options, setOptions] = useState<SelectOption[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+
+  const handleSearch = (search: string) => {
+    setLoading(true);
+    setError('');
+    fetchCharacters(search)
+      .then((data) => {
+        setOptions(
+          data.map((character: any) => ({
+            value: character.id,
+            label: character.name,
+            img: character.image,
+            episode: character.episode.length,
+          }))
+        );
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching characters:', error);
+        setError('Error fetching characters');
+        setLoading(false);
+      });
+  };
 
   return (
     <main className='flex flex-col items-center justify-center mt-24'>
@@ -24,14 +49,13 @@ export default function Home() {
           value={value}
           setValue={setValue}
           options={options}
-          search={search}
-          setSearch={setSearch}
           error={error}
           loading={loading}
+          onChange={(e) => {
+            console.log('e.target.value', e.target.value);
+            handleSearch(e.target.value);
+          }}
         />
-      </div>
-      <div>
-        <MultiSelectInput value={value} setValue={setValue} options={options} search={search} setSearch={setSearch} error={error} loading={loading} />
       </div>
     </main>
   );

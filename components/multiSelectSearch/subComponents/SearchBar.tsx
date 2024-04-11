@@ -4,15 +4,14 @@ import InputSelectedElement from './InputSelectedElement';
 import { SelectOption } from '../MultiSelectSearch';
 
 type SelectProps = {
-  options: SelectOption[];
   value?: SelectOption[];
   setValue: React.Dispatch<React.SetStateAction<SelectOption[] | undefined>>;
   search: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
-  setFilteredOptions: React.Dispatch<React.SetStateAction<SelectOption[]>>;
 };
 
-export default function SearchBar({ options, value, setValue, search, setSearch, setFilteredOptions }: SelectProps) {
+export default function SearchBar({ value, setValue, search, onChange, setSearch }: SelectProps) {
   return (
     <div className='border border-gray-600 p-2 rounded-md min-h-14 mb-4 flex flex-row  items-center justify-between gap-2  shadow-md'>
       <div className='flex flex-wrap gap-2'>
@@ -27,7 +26,7 @@ export default function SearchBar({ options, value, setValue, search, setSearch,
           placeholder='Search...'
           onChange={(e) => {
             setSearch(e.target.value);
-            setFilteredOptions(options.filter((option) => option.label.toLowerCase().includes(e.target.value.toLowerCase())));
+            onChange(e);
           }}
         />
       </div>
