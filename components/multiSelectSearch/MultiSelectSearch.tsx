@@ -25,8 +25,15 @@ export default function MultiSelectSearch({ options, value, setValue, errorMessa
   return (
     <div className='w-full'>
       <SearchBar value={value} setValue={setValue} search={search} setSearch={setSearch} onChange={onChange} />
-      {loading && <div className='bg-blue-400 p-2 text-white'>Loading...</div>}
-      <SelectList options={options} value={value} setValue={setValue} search={search} setSearch={setSearch} errorMassage={errorMessage} />
+      <SelectList
+        options={options}
+        value={value}
+        setValue={setValue}
+        search={search}
+        setSearch={setSearch}
+        errorMassage={errorMessage}
+        loading={loading}
+      />
     </div>
   );
 }

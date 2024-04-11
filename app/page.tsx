@@ -13,23 +13,26 @@ export default function Home() {
   const handleSearch = (search: string) => {
     setLoading(true);
     setErrorMessage('');
-    fetchCharacters(search)
-      .then((data) => {
-        setOptions(
-          data.map((character: any) => ({
-            value: character.id,
-            label: character.name,
-            img: character.image,
-            episode: character.episode.length,
-          }))
-        );
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error fetching characters:', error);
-        setErrorMessage('Error fetching characters');
-        setLoading(false);
-      });
+    const getData = setTimeout(() => {
+      fetchCharacters(search)
+        .then((data) => {
+          setOptions(
+            data.map((character: any) => ({
+              value: character.id,
+              label: character.name,
+              img: character.image,
+              episode: character.episode.length,
+            }))
+          );
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error('Error fetching characters:', error);
+          setErrorMessage('Error fetching characters');
+          setLoading(false);
+        });
+      clearTimeout(getData);
+    }, 1000);
   };
 
   return (
