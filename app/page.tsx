@@ -2,38 +2,11 @@
 import React, { useState } from 'react';
 import MultiSelectSearch, { SelectOption } from '@/components/multiSelectSearch/MultiSelectSearch';
 import Link from 'next/link';
-import { fetchCharacters } from '@/services/rickAndMortyService';
+import useCharacterSearch from '@/hooks/useCharacterSearch';
 
 export default function Home() {
   const [value, setValue] = useState<SelectOption[]>([]);
-  const [options, setOptions] = useState<SelectOption[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>('');
-
-  const handleSearch = (search: string) => {
-    setLoading(true);
-    setErrorMessage('');
-    const getData = setTimeout(() => {
-      fetchCharacters(search)
-        .then((data) => {
-          setOptions(
-            data.map((character: any) => ({
-              value: character.id,
-              label: character.name,
-              img: character.image,
-              subTitle: character.episode.length + ' Episodes',
-            }))
-          );
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error('Error fetching characters:', error);
-          setErrorMessage('Error fetching characters');
-          setLoading(false);
-        });
-      clearTimeout(getData);
-    }, 1000);
-  };
+  const { options, loading, errorMessage, handleSearch } = useCharacterSearch();
 
   return (
     <main className='flex flex-col items-center justify-center mt-24'>

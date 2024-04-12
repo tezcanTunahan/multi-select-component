@@ -28,7 +28,6 @@ export const fetchCharacters = async (search: string): Promise<Character[]> => {
     });
     return response.data.results;
   } catch (error) {
-    console.error('Error fetching characters:', error);
     throw new Error('Error fetching characters');
   }
 };
