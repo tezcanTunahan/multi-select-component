@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import SelectList from './subComponents/SelectList';
 import SearchBar from './subComponents/SearchBar';
+import { cn } from '@/lib/utils';
 
 export type SelectOption = {
   value: string;
@@ -17,13 +18,14 @@ type Props = {
   errorMessage: string;
   loading: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
 };
 
-export default function MultiSelectSearch({ options, errorMessage, loading, onChange, value, setValue }: Props) {
+export default function MultiSelectSearch({ options, errorMessage, loading, onChange, value, setValue, className }: Props) {
   const [search, setSearch] = useState<string>('');
 
   return (
-    <div className='w-full'>
+    <div className={cn('w-full', className)}>
       <SearchBar value={value} setValue={setValue} search={search} setSearch={setSearch} onChange={onChange} />
       <SelectList
         options={options}
