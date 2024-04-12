@@ -7,7 +7,7 @@ if (!process.env.NEXT_PUBLIC_RICK_AND_MORTY_API) {
 }
 
 // Define the type for your character data for better type checking
-export type Character = {
+type Character = {
   id: number;
   name: string;
   image: string;
@@ -28,6 +28,7 @@ export const fetchCharacters = async (search: string): Promise<Character[]> => {
     });
     return response.data.results;
   } catch (error) {
+    console.error('Error fetching characters:', error);
     throw new Error('Error fetching characters');
   }
 };
