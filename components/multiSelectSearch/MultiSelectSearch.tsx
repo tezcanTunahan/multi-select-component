@@ -13,7 +13,7 @@ export type SelectOption = {
 type Props = {
   options: SelectOption[];
   value?: SelectOption[];
-  setValue: React.Dispatch<React.SetStateAction<SelectOption[] | undefined>>;
+  setValue: React.Dispatch<React.SetStateAction<SelectOption[]>>;
   errorMessage: string;
   loading: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

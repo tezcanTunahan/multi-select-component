@@ -5,7 +5,7 @@ import { SelectOption } from '../MultiSelectSearch';
 
 type Props = {
   value?: SelectOption[];
-  setValue: React.Dispatch<React.SetStateAction<SelectOption[] | undefined>>;
+  setValue: React.Dispatch<React.SetStateAction<SelectOption[]>>;
   search: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   setSearch: React.Dispatch<React.SetStateAction<string>>;

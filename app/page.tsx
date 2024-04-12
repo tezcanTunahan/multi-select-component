@@ -6,7 +6,7 @@ import { fetchCharacters } from '@/services/rickAndMortyService';
 import { MultiSelectInput } from 'multi-select-input';
 
 export default function Home() {
-  const [value, setValue] = useState<SelectOption[] | undefined>([]);
+  const [value, setValue] = useState<SelectOption[]>([]);
   const [options, setOptions] = useState<SelectOption[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -46,7 +46,7 @@ export default function Home() {
         </Link>
       </p>
       <div className='w-10/12 md:w-6/12'>
-        <MultiSelectInput
+        <MultiSelectSearch
           value={value}
           setValue={setValue}
           options={options}

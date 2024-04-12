@@ -4,13 +4,13 @@ import { getSubString } from '@/lib/utils';
 
 type Props = {
   value: SelectOption;
-  setValue: React.Dispatch<React.SetStateAction<SelectOption[] | undefined>>;
+  setValue: React.Dispatch<React.SetStateAction<SelectOption[]>>;
 };
 
 // Component to show the selected elements in the input
 export default function InputSelectedElement({ value, setValue }: Props) {
   const removeElement = () => {
-    setValue((prevValue: SelectOption[] | undefined) => {
+    setValue((prevValue: SelectOption[]) => {
       return prevValue?.filter((opt) => opt.value !== value.value);
     });
   };

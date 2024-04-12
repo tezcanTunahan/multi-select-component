@@ -2,13 +2,15 @@ import React from 'react';
 import HighlightSubstring from './HighlightSubstring';
 import { SelectOption } from '../MultiSelectSearch';
 import useKeyboardNavigation from '@/hooks/useKeyboardNavigation';
+import { cn } from '@/lib/utils';
 
 type Props = {
   options: any[];
   value: any;
-  setValue: any;
+  // setValue: any;
+  setValue: React.Dispatch<React.SetStateAction<SelectOption[]>>;
   search: string;
-  setSearch: any;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
   errorMassage: string;
   loading: boolean;
 };
@@ -23,17 +25,20 @@ export default function SelectList({ options, value, setValue, search, setSearch
     return <div className='bg-blue-400 p-2 text-white'>Loading...</div>;
   }
   return (
-    <ul className='flex flex-col gap-2'>
+    <ul className='flex flex-col gap-2 relative'>
       {search.length > 0 &&
-        options.map((option) => (
+        options.map((option, index) => (
           <button
             id='button'
-            className={`flex items-center gap-2 cursor-pointer hover:bg-gray-200 p-2 ${
+            className={cn(
+              'flex items-center gap-2 cursor-pointer hover:bg-gray-200 bg-gray-50 p-2 absolute z-10 w-full rounded-md border border-gray-200',
               value?.some((opt: any) => opt.value === option.value) ? 'bg-gray-300' : ''
-            }  `}
+            )}
+            style={{ top: `${index * 4}rem` }}
             key={option.value}
             onClick={() => {
               setValue((prevValue: SelectOption[] | undefined) => {
+                setSearch('');
                 if (prevValue?.some((opt: SelectOption) => opt.value === option.value)) {
                   return prevValue?.filter((opt: any) => opt.value !== option.value);
                 }
