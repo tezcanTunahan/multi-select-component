@@ -44,8 +44,8 @@ export default function SelectList({ options, value, setValue, search, setSearch
             style={{ top: `${index * 4}rem` }}
             key={option.value}
             onClick={() => {
+              setSearch('');
               setValue((prevValue: SelectOption[]) => {
-                setSearch('');
                 if (prevValue?.some((opt: SelectOption) => opt.value === option.value)) {
                   return prevValue?.filter((opt: SelectOption) => opt.value !== option.value);
                 }

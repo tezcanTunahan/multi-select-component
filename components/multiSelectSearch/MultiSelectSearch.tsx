@@ -20,7 +20,7 @@ type Props = {
 };
 
 export default function MultiSelectSearch({ options, errorMessage, loading, onChange, value, setValue }: Props) {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState<string>('');
 
   return (
     <div className='w-full'>
