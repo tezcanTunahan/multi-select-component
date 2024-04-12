@@ -10,8 +10,8 @@ type Props = {
   setValue: React.Dispatch<React.SetStateAction<SelectOption[]>>;
   search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
-  errorMassage: string;
-  loading: boolean;
+  errorMassage?: string;
+  loading?: boolean;
 };
 
 export default function SelectList({ options, value, setValue, search, setSearch, errorMassage, loading }: Props) {

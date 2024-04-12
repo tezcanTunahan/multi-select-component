@@ -15,10 +15,10 @@ type Props = {
   options: SelectOption[];
   value: SelectOption[];
   setValue: React.Dispatch<React.SetStateAction<SelectOption[]>>;
-  errorMessage: string;
-  loading: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
+  loading?: boolean;
+  errorMessage?: string;
 };
 
 export default function MultiSelectSearch({ options, errorMessage, loading, onChange, value, setValue, className }: Props) {
