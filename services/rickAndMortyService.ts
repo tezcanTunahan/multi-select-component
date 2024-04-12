@@ -7,7 +7,7 @@ if (!process.env.NEXT_PUBLIC_RICK_AND_MORTY_API) {
 }
 
 // Define the type for your character data for better type checking
-type Character = {
+export type Character = {
   id: number;
   name: string;
   image: string;
