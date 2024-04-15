@@ -44,13 +44,13 @@ export default function Home() {
           </Link>
         </p>
         <p>
-          and github page of the npm package
+          and the source code of the package
           <Link
             href='https://github.com/tezcanTunahan/multi-select-component-package'
             target='_blank'
             className='text-sky-500 hover:text-sky-700 font-semibold'>
             {' '}
-            here
+            npm package source code
           </Link>
         </p>
       </div>
