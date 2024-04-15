@@ -13,7 +13,7 @@ export default function Home() {
       <div className='mb-10'>
         <h1 className='text-4xl mb-10'>
           Created by
-          <Link href={process.env.NEXT_PUBLIC_CREATOR_WEBSITE_URL || '#'} target='_blank' className='text-sky-500 hover:text-sky-700 font-semibold'>
+          <Link href={'https://www.tunahantezcan.com/'} target='_blank' className='text-sky-500 hover:text-sky-700 font-semibold'>
             {' '}
             Tunahan tezcan
           </Link>
